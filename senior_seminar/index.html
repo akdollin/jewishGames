@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <title>Jewish Games</title>
+      <script src="js/jquery-1.10.2.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+      <script src="js/scripts.js"></script>
+      <script type="text/javascript" src="js/wordfind.js"></script> 
+      <script type="text/javascript" src="js/wordfindgame.js"></script> 
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+      <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="row" id="wordSearch" style="text-align:center;">
+
+      <div id='puzzle'></div>
+      <div id='words'></div>
+      <div><button id='solve'>Solve Puzzle</button></div>
+      <script>
+
+      var words = ["Bereishit","Noach","LechLecha","Vayeira","ChayeiSarah","Toldot","Vayetzei","Vayishlach","Vayeshev","Mikeitz","Vayigash","Vayechi","Shmot","Bo","Beshalach","Yitro","Mishpatim","Trumah","Tetzaveh","KiTisa","Vayakhel","Pekudei","Vayikra","Tzav","Shmini","Tazria","Metzora","AchareiMot","Kedoshim","Emor","Behar","Bechukotai","Bamidbar","Naso","Behalotcha","Shlach","Korach","Chukat","Balak","Pinchas","Matot","Masay","Devarim","Vetchanan","Ekev","Reeh","Shoftim","KiTetzei","KiTavo","Nitzavim","Vayelech","Haazinu","VZotHaBracha"];
+
+      // start a word find game
+      var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
+
+      $('#solve').click( function() {
+        wordfindgame.solve(gamePuzzle, words);
+      });
+
+      // create just a puzzle, without filling in the blanks and print to console
+      var puzzle = wordfind.newPuzzle(words, {height: 18, width:18, fillBlanks: false});
+      // wordfind.print(puzzle);
+
+      </script>
+    </div>
+
+    <!-- HANGMAN -->
+    <div class="row" id="hangman">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-offset-1">
+                <h1>Rabbinic and Biblical Hangman</h1>
+              </div>
+          </div>
+      </div>  
+
+      <hr>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm-5 col-md-5 col-md-offset-1">
+            <div class="row">
+              <div id="hangman-sprite" class="hangman-sprite0"></div>
+            </div>
+          </div>
+
+          <div class="col-sm-5 col-md-5 play-area initially-hidden">
+            <div class="row">
+              <div id="unguessed-letters"></div>
+              </div>
+            <div class="row">
+              <div id="word-container" class="initially-hidden">
+                <p class="letter"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div id="incorrect-guesses">
+                <h3 class="light-weight">Incorrect Guesses: </h3>
+              </div>
+            </div>
+            <div class="row">
+              <button class="btn btn-lg btn-success" id="play-again">Play again?</button>
+            </div>
+          </div>
+
+          <div class="col-md-6 game-setup">
+            <div class="btn-group" id="choose-category">
+              <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown">Select a category <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+              <li id="talmud">Talmud</li>
+              <li id="mishnah">Mishnah</li>
+              <li id="torah">Torah</li>
+            </ul>
+          </div>
+
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </div> <!-- row -->
+</body>
+</html>
